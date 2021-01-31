@@ -31,7 +31,7 @@ function contentforexcerpt_addCheckbox() {
         </label>
     </div>
 <?php }
-add_action( 'post_submitbox_misc_actions', contentforexcerpt_addCheckbox );
+add_action( 'post_submitbox_misc_actions', 'contentforexcerpt_addCheckbox' );
 
 /**
  * Save the selected value for our custom checkbox
@@ -58,7 +58,7 @@ function contentforexcerpt_saveCheckbox( $post_id ) {
         delete_post_meta( $post_id, '_content_for_excerpt' );
     }
 }
-add_action( 'save_post', contentforexcerpt_saveCheckbox );
+add_action( 'save_post', 'contentforexcerpt_saveCheckbox' );
 
 /**
  * Filter for the excerpt - should we override with the post's full content?
@@ -76,4 +76,4 @@ function contentforexcerpt_contentFilter( $excerpt ) {
 	}
 	return $excerpt;
 }
-add_filter( 'get_the_excerpt', contentforexcerpt_contentFilter, 50 );
+add_filter( 'get_the_excerpt', 'contentforexcerpt_contentFilter', 50 );
